@@ -1,5 +1,5 @@
 export const environment = {
     production: true,
     apiDomain: '',
-    apiUrl: '/api'
+    apiUrl: 'https://patientviewer.azurewebsites.net/api'
 };
