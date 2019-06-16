@@ -4,7 +4,8 @@
     "scripts": {
         "start": "concurrently \"dotnet run -p PatientViewer.Web\" \"cd ClientApp && npm run start\"",
         "setup": "npm install && npm run client-setup",
-        "client-setup": "cd ClientApp && npm install"
+        "client-setup": "cd ClientApp && npm install",
+        "test": "concurrently \"cd PatientViewer.Tests && dotnet test\" \"cd ClientApp && npm run test\""
     },
     "dependencies": {
         "concurrently": "^4.1.0"
