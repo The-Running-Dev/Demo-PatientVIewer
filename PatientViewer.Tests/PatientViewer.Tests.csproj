@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Moq" Version="4.11.0" />
+    <PackageReference Include="nunit" Version="3.12.0" />
+    <PackageReference Include="NUnit3TestAdapter" Version="3.13.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PatientViewer.Bootstrapper\PatientViewer.Bootstrapper.csproj" />
+    <ProjectReference Include="..\PatientViewer.Data\PatientViewer.Data.csproj" />
+    <ProjectReference Include="..\PatientViewer.Repository\PatientViewer.Repository.csproj" />
+    <ProjectReference Include="..\PatientViewer.Service\PatientViewer.Service.csproj" />
+    <ProjectReference Include="..\PatientViewer.Web\PatientViewer.Web.csproj" />
+  </ItemGroup>
+</Project>
