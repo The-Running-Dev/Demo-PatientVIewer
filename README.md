@@ -74,6 +74,9 @@ Encapsulates all tests for ```PatientViewer.Data```, ```PatientViewer.Repository
 ### PatientViewer.Web
 Encapsulates access and display to the patients through a MVC application, and a single WebAPI Controller in ```PatientController```. The views are split into the ```_Layout.cshtml``` with ```AppHeader.cshtml``` and ```SideBar.cshtml``` partials. ```Libman``` is used to manage the client side librarie, with a single entry for ```font-awesome```.
 
+### Deployment
+The MVC/WebAPI application is setup to deploy through an ```Azure Pipeline``` every time there is code committed to this GitHub repository. The Angular application is deployed through a ```Web Deploy``` profile.
+
 #### Technologies
 * .NET Core 2.2 (https://dotnet.microsoft.com/) for the MVC/WebAPI application and supprting code
 * Angular 8 (https://angular.io) for demo client consumer

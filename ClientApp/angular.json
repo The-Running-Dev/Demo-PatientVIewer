@@ -23,7 +23,8 @@
                             "src/favicon.ico",
                             "src/assets",
                             "src/config",
-                            "src/web.config"
+                            "src/web.config",
+                            "src/PatientViewer-NG - Web Deploy.xml"
                         ],
                         "styles": [
                             "node_modules/font-awesome/css/font-awesome.min.css",
@@ -90,7 +91,8 @@
                             "src/favicon.ico",
                             "src/assets",
                             "src/config",
-                            "src/web.config"
+                            "src/web.config",
+                            "src/PatientViewer-NG - Web Deploy.xml"
                         ],
                         "styles": [
                             "src/assets/css/styles.css"
