@@ -1,0 +1,8 @@
+{
+  "Version": "1.0.0-develop",
+  "AllowDiagnostics": "true",
+  "EnableDiagnostics": "true",
+  "ApiUrls": {
+    "Patient": "patient"
+  }
+}

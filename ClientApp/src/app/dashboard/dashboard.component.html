@@ -1,0 +1,48 @@
+<div class="app-title">
+    <div>
+        <h1><i class="fa fa-th-list"></i> All Patients</h1>
+    </div>
+    <ul class="app-breadcrumb breadcrumb side">
+        <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+        <li class="breadcrumb-item active"><a href="#">All Patients</a></li>
+    </ul>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="tile">
+            <div class="tile-body">
+                <p-table #dt [value]="patients" [paginator]="true" [rows]="10"
+                         sortField="Name"
+                         [globalFilterFields]="['Name','DateOfBirth','PostCode']">
+                    <ng-template pTemplate="caption">
+                        <div style="text-align: right">
+                            <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
+                            <input type="text" pInputText size="50" placeholder="Global Filter"
+                                   (input)="dt.filterGlobal($event.target.value, 'contains')" style="width:auto">
+                        </div>
+                    </ng-template>
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th pSortableColumn="Name">Name
+                                <p-sortIcon field="Name"></p-sortIcon>
+                            </th>
+                            <th pSortableColumn="DateOfBirth">Date of Birth
+                                <p-sortIcon field="DateOfBirth"></p-sortIcon>
+                            </th>
+                            <th pSortableColumn="PostCode">Post Code
+                                <p-sortIcon field="PostCode"></p-sortIcon>
+                            </th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-patient>
+                        <tr>
+                            <td>{{patient.Name}}</td>
+                            <td>{{patient.DateOfBirth | date :'fullDate'}}</td>
+                            <td>{{patient.PostCode}}</td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </div>
+        </div>
+    </div>
+</div>
