@@ -50,9 +50,6 @@ In PowerShell or Bash
 
 ## Project Structure and Rational
 
-### AngularUI
-The ClientApp output build directory. Only used for deploying the Angular UI to Azure. This directory is excluded from Git (inside .gitignore) as the contents change at build time.
-
 ### ClientApp
 The Angular application. Data is provided though the WebAPI controller from PatientViewer.Web.
 
