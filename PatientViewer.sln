@@ -14,8 +14,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PatientViewer.Repository", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PatientViewer.Data", "PatientViewer.Data\PatientViewer.Data.csproj", "{68A7FC7F-468D-4303-9039-0D13477DA419}"
 EndProject
-Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "AngularUI", "AngularUI\AngularUI.njsproj", "{1F97EE70-F33B-4C6E-9A13-DE0FDD71BD79}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -46,10 +44,6 @@ Global
 		{68A7FC7F-468D-4303-9039-0D13477DA419}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{68A7FC7F-468D-4303-9039-0D13477DA419}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{68A7FC7F-468D-4303-9039-0D13477DA419}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1F97EE70-F33B-4C6E-9A13-DE0FDD71BD79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1F97EE70-F33B-4C6E-9A13-DE0FDD71BD79}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1F97EE70-F33B-4C6E-9A13-DE0FDD71BD79}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1F97EE70-F33B-4C6E-9A13-DE0FDD71BD79}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

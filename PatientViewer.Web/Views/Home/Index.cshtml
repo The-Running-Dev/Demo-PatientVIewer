@@ -34,8 +34,18 @@
 </div>
 
 @section Scripts
-	{
+{
 	<script type="text/javascript" src="~/lib/bootstrap/js/plugins/jquery.dataTables.min.js"></script>
 	<script type="text/javascript" src="~/lib/bootstrap/js/plugins/dataTables.bootstrap.min.js"></script>
-	<script type="text/javascript">$('#sampleTable').DataTable();</script>
+	<script type="text/javascript">
+	$(document).ready(function() {
+		$('#sampleTable').DataTable();
+
+		// Hide the items per page selector
+		$('.dataTables_length').hide();
+
+		// Move the pager to the top
+		$("#sampleTable_wrapper .row:first-child").after($('#sampleTable_wrapper .row:last-child'));
+	});
+	</script>
 }
