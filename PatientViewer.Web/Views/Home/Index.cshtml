@@ -2,50 +2,40 @@
 @model List<PatientViewer.Data.Models.Patient>;
 
 @{
-	ViewData["Title"] = "Patients";
-	ViewData["AppTitle"] = new AppTitle { Title = "All Patients" };
+    ViewData["Title"] = "Patients";
+    ViewData["AppTitle"] = new AppTitle { Title = "All Patients" };
 }
 <div class="row">
-	<div class="col-md-12">
-		<div class="tile">
-			<div class="tile-body">
-				<table class="table table-hover table-bordered" id="sampleTable">
-				<thead>
-				<tr>
-					<th>Name</th>
-					<th>Date of Birth</th>
-					<th>Post Code</th>
-				</tr>
-				</thead>
-				<tbody>
-				@foreach (var patient in Model)
-				{
-				<tr>
-					<td>@Html.DisplayFor(p => patient.Name)</td>
-					<td>@Html.DisplayFor(p => patient.DateOfBirth)</td>
-					<td>@Html.DisplayFor(p => patient.PostCode)</td>
-				</tr>
-				}
-				</tbody>
-				</table>
-			</div>
-		</div>
-	</div>
+    <div class="col-md-12">
+        <div class="tile">
+            <div class="tile-body">
+                <table class="table table-hover table-bordered" id="sampleTable">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Date of Birth</th>
+                            <th>Post Code</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var patient in Model)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(p => patient.Name)</td>
+                                <td>@Html.DisplayFor(p => patient.DateOfBirth)</td>
+                                <td>@Html.DisplayFor(p => patient.PostCode)</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 </div>
 
 @section Scripts
-{
-	<script type="text/javascript" src="~/lib/bootstrap/js/plugins/jquery.dataTables.min.js"></script>
-	<script type="text/javascript" src="~/lib/bootstrap/js/plugins/dataTables.bootstrap.min.js"></script>
-	<script type="text/javascript">
-	$(document).ready(function() {
-		$('#sampleTable').DataTable();
-
-		// Hide the items per page selector
-		$('.dataTables_length').hide();
-
-		// Move the pager to the top
-		$("#sampleTable_wrapper .row:first-child").after($('#sampleTable_wrapper .row:last-child'));
-	});
-	</script>
+    {
+    <script type="text/javascript" src="~/js/plugins/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="~/js/plugins/dataTables.bootstrap.min.js"></script>
+    <script type="text/javascript" src="~/js/Views/Home/index.js"></script>
 }

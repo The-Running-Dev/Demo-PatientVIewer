@@ -1,44 +1,29 @@
-## Patient Viewer
+﻿## Patient Viewer
 
-A Responsive UI Demo Application
+A Responsive UI demo application build with ASP.NET Core MVC/WebAPI on top of .NET Core 2.2.
 
-The project consists of two separate applications:
-
-- A ASP.NET Core MVC/WebAPI built with .NET Core 2.2
-
-- A Angular application built with Angular 8
-
-#### MVC Demo: https://patientviewer.azurewebsites.net
-
-#### Angular Demo: https://patientviewer-ng.azurewebsites.net
+Demo: https://patientviewer.azurewebsites.net
 
 ## Running Locally
 
 ### Requirements
-- .NET Core 2.2 https://dotnet.microsoft.com/download/dotnet-core/2.2
-- NodeJS 12 https://nodejs.org/en/download/current/
+- .NET Core 2.2. https://dotnet.microsoft.com/download/dotnet-core/2.2
 
-### Steps
 In PowerShell or Bash
 
 1. Clone the repository:
 
     ```git clone https://github.com/The-Running-Dev/Demo-PatientVIewer```
 
-2. Install the Node dependencies:
+2. Run the application:
 
-    ```npm run setup```
+    ```dotnet run -p PatientViewer.Web```
 
-3. Run the applications:
-
-    ```npm run start```
-4. Access the applications:
+3. Access the application:
 
     The MVC application can be assessed at http://localhost:5000/
 
     The WebAPI for the Patients is at http://localhost:5000/api/patient
-
-    The Angular UI will open a browser to http://localhost:4200
 
 ## Running Tests
 In PowerShell or Bash
@@ -46,12 +31,9 @@ In PowerShell or Bash
 1. Complete the steps above in "Running Locally"
 3. Run the tests:
 
-    ```npm run test```
+    ```dotnet test```
 
 ## Project Structure and Rational
-
-### ClientApp
-The Angular application. Data is provided though the WebAPI controller from PatientViewer.Web.
 
 ### PatientViewer.Bootstrapper
 Encapulates the dependency resolver used for dependeny injection in the .NET projects. This is a separte project so the rest of the projects are not tied to a specific dependency injection framework. The current implementation is based on ```StructureMap```.
@@ -76,5 +58,3 @@ The MVC/WebAPI application is setup to deploy through an ```Azure Pipeline``` ev
 
 #### Technologies
 * .NET Core 2.2 (https://dotnet.microsoft.com/) for the MVC/WebAPI application and supprting code
-* Angular 8 (https://angular.io) for demo client consumer
-* TypScript )http://www.typescriptlang.org/) for strongly typed JavaScript

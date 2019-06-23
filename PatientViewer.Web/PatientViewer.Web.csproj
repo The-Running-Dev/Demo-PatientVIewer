@@ -9,6 +9,11 @@
     <UserSecretsId>b35a809c-8f7f-4e05-9cf6-d75d42efccf9</UserSecretsId>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Include="wwwroot\js\plugins\dataTables.bootstrap.min.js" />
+    <None Include="wwwroot\js\plugins\jquery.dataTables.min.js" />
+  </ItemGroup>
+
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
@@ -18,9 +23,6 @@
     <PackageReference Include="Microsoft.Web.LibraryManager.Build" Version="2.0.48" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="wwwroot\lib\bootstrap\js\plugins\" />
-  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PatientViewer.Bootstrapper\PatientViewer.Bootstrapper.csproj" />
     <ProjectReference Include="..\PatientViewer.Service\PatientViewer.Service.csproj" />

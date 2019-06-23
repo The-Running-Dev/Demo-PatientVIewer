@@ -12,8 +12,16 @@ namespace PatientViewer.Repository
     /// <summary>
     /// Reads the patients from a CSV file
     /// </summary>
-    public class CsvPatientReader: IPatientReader
+    public class CsvPatientReader : IPatientReader
     {
+        public CsvPatientReader()
+        {
+            _dataFilePath = Path.Combine(
+                Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
+                Path.Combine("Data", "Patients.csv")
+            );
+        }
+
         /// <summary>
         /// Get all the patients from a CSV file
         /// </summary>
@@ -22,7 +30,7 @@ namespace PatientViewer.Repository
         {
             List<Patient> patients;
 
-            using (var reader = new StreamReader(_dataFile))
+            using (var reader = new StreamReader(_dataFilePath))
             {
                 using (var csv = new CsvReader(reader))
                 {
@@ -37,6 +45,6 @@ namespace PatientViewer.Repository
             return patients;
         }
 
-        private readonly string _dataFile = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"Data\Patients.csv");
+        private readonly string _dataFilePath;
     }
 }
