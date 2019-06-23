@@ -15,7 +15,7 @@ namespace PatientViewer.Repository
             Map(m => m.DateOfBirth).Name("Date of Birth");
             Map(m => m.Forename).Name("Forename");
             Map(m => m.Surname).Name("Surname");
-            Map(m => m.PostCode).Name("Postal Code");
+            Map(m => m.PostalCode).Name("Postal Code");
         }
     }
 }

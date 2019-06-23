@@ -46,9 +46,9 @@ namespace PatientViewer.Tests
 
             var patients = new List<Patient>
             {
-                new Patient { UniqueIdentifier = 1, DateOfBirth = DateTime.Today.Date, Forename = "Ben", Surname = "Richards", PostCode = "SO12 G56" },
-                new Patient { UniqueIdentifier = 2, DateOfBirth = DateTime.Today.Date, Forename = "Sub", Surname = "Zero", PostCode = "SO12 G56" },
-                new Patient { UniqueIdentifier = 3, DateOfBirth = DateTime.Today.Date, Forename = "Captain", Surname = "America", PostCode = "SO12 G56" }
+                new Patient { UniqueIdentifier = 1, DateOfBirth = DateTime.Today.Date, Forename = "Ben", Surname = "Richards", PostalCode = "SO12 G56" },
+                new Patient { UniqueIdentifier = 2, DateOfBirth = DateTime.Today.Date, Forename = "Sub", Surname = "Zero", PostalCode = "SO12 G56" },
+                new Patient { UniqueIdentifier = 3, DateOfBirth = DateTime.Today.Date, Forename = "Captain", Surname = "America", PostalCode = "SO12 G56" }
             };
 
             // Mock the patient service methods

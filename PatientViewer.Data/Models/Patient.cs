@@ -22,7 +22,7 @@ namespace PatientViewer.Data.Models
         [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}")]
         public DateTime DateOfBirth { get; set; }
 
-        public string PostCode { get; set; }
+        public string PostalCode { get; set; }
 
         public Patient() { }
     }
