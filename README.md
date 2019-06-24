@@ -7,13 +7,13 @@ Demo: https://patientviewer.azurewebsites.net
 ## Running Locally
 
 ### Requirements
-- .NET Core 2.2. https://dotnet.microsoft.com/download/dotnet-core/2.2
+- .NET Core 2.2 (https://dotnet.microsoft.com/download/dotnet-core/2.2)
 
 In PowerShell or Bash
 
 1. Clone the repository:
 
-    ```git clone https://github.com/The-Running-Dev/Demo-PatientVIewer```
+    ```git clone https://github.com/The-Running-Dev/Demo-PatientViewer-NET```
 
 2. Run the application:
 
@@ -29,7 +29,7 @@ In PowerShell or Bash
 In PowerShell or Bash
 
 1. Complete the steps above in "Running Locally"
-3. Run the tests:
+2. Run the tests:
 
     ```dotnet test```
 
@@ -54,7 +54,7 @@ Encapsulates all tests for ```PatientViewer.Data```, ```PatientViewer.Repository
 Encapsulates access and display to the patients through a MVC application, and a single WebAPI Controller in ```PatientController```. The views are split into the ```_Layout.cshtml``` with ```AppHeader.cshtml``` and ```SideBar.cshtml``` partials. ```Libman``` is used to manage the client side librarie, with a single entry for ```font-awesome```.
 
 ### Deployment
-The MVC/WebAPI application is setup to deploy through an ```Azure Pipeline``` every time there is code committed to this GitHub repository. The Angular application is deployed through a ```Web Deploy``` profile.
+The application is setup to deploy through an ```Azure Pipeline``` every time there is code committed to this GitHub repository.
 
 #### Technologies
 * .NET Core 2.2 (https://dotnet.microsoft.com/) for the MVC/WebAPI application and supprting code
