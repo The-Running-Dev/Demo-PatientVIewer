@@ -1,3 +1,6 @@
+# Set repository language to C#
+*.* linguist-language=c#
+
 ###############################################################################
 # Set default behavior to automatically normalize line endings.
 ###############################################################################
