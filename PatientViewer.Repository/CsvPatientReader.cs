@@ -12,7 +12,7 @@ namespace PatientViewer.Repository
     /// <summary>
     /// Reads the patients from a CSV file
     /// </summary>
-    public class CsvPatientReader : IPatientReader
+    public class CsvPatientReader: IPatientReader
     {
         public CsvPatientReader()
         {
@@ -30,9 +30,9 @@ namespace PatientViewer.Repository
         {
             List<Patient> patients;
 
-            using (var reader = new StreamReader(_dataFilePath))
+            using(var reader = new StreamReader(_dataFilePath))
             {
-                using (var csv = new CsvReader(reader))
+                using(var csv = new CsvReader(reader))
                 {
                     // Register the mapper between the CSV and the Patient model
                     csv.Configuration.RegisterClassMap<PatientCsvMap>();

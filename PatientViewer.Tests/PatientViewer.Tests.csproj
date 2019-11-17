@@ -1,11 +1,14 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
 
     <IsPackable>false</IsPackable>
   </PropertyGroup>
 
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PublicSign>false</PublicSign>
+  </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Moq" Version="4.11.0" />
     <PackageReference Include="nunit" Version="3.12.0" />

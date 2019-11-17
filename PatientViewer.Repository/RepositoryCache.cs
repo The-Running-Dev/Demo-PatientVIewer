@@ -1,5 +1,6 @@
 ﻿using System;
-using System.Runtime.Caching;
+
+using Microsoft.Extensions.Caching.Memory;
 
 using PatientViewer.Service.Interfaces;
 
@@ -15,7 +16,8 @@ namespace PatientViewer.Repository
         /// </summary>
         public RepositoryCache()
         {
-            _policy = new CacheItemPolicy { SlidingExpiration = TimeSpan.FromMinutes(60) };
+            _policy = new MemoryCache(new MemoryCacheOptions());
+            //_policy = new CacheItemPolicy { SlidingExpiration = TimeSpan.FromMinutes(60) };
         }
 
         /// <summary>
@@ -48,7 +50,7 @@ namespace PatientViewer.Repository
         public T Get<T>(string key, Func<T> getData) where T : class
         {
             // If the cache key exists
-            if (_cache.Contains(key))
+            if(_cache.Contains(key))
             {
                 // Get the value from the cache
                 return _cache.Get(key) as T;

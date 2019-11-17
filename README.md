@@ -4,6 +4,8 @@ A Responsive UI demo application build with ASP.NET Core MVC/WebAPI on top of .N
 
 Demo: https://patientviewer.azurewebsites.net
 
+Build Status: [![Build status](https://boyan.visualstudio.com/PatientViewer.NET/_apis/build/status/PatientViewer.NET%20Build)](https://boyan.visualstudio.com/PatientViewer.NET/_build/latest?definitionId=2)
+
 ## Running Locally
 
 ### Requirements
