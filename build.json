@@ -1,0 +1,381 @@
+{
+  "options": [
+    {
+      "enabled": true,
+      "definition": { "id": "5d58cc01-7c75-450c-be18-a388ddb129ec" },
+      "inputs": {
+        "branchFilters": "[\"+refs/heads/*\"]",
+        "additionalFields": "{}"
+      }
+    },
+    {
+      "enabled": false,
+      "definition": { "id": "a9db38f9-9fdc-478c-b0f9-464221e58316" },
+      "inputs": {
+        "workItemType": "Bug",
+        "assignToRequestor": "true",
+        "additionalFields": "{}"
+      }
+    }
+  ],
+  "triggers": [
+    {
+      "branchFilters": ["+master"],
+      "pathFilters": ["+/"],
+      "batchChanges": true,
+      "maxConcurrentBuildsPerBranch": 1,
+      "triggerType": 2
+    }
+  ],
+  "variables": {
+    "BuildConfiguration": { "value": "release", "allowOverride": true },
+    "BuildPlatform": { "value": "any cpu", "allowOverride": true },
+    "system.debug": { "value": "false", "allowOverride": true }
+  },
+  "properties": {},
+  "tags": [],
+  "_links": {
+    "self": {
+      "href": "https://boyan.visualstudio.com/78a0c3d6-7329-407f-80d5-126971f5cbc6/_apis/build/Definitions/2?revision=8"
+    },
+    "web": {
+      "href": "https://boyan.visualstudio.com/78a0c3d6-7329-407f-80d5-126971f5cbc6/_build/definition?definitionId=2"
+    },
+    "editor": {
+      "href": "https://boyan.visualstudio.com/78a0c3d6-7329-407f-80d5-126971f5cbc6/_build/designer?id=2&_a=edit-build-definition"
+    },
+    "badge": {
+      "href": "https://boyan.visualstudio.com/78a0c3d6-7329-407f-80d5-126971f5cbc6/_apis/build/status/2"
+    }
+  },
+  "buildNumberFormat": "$(date:yyyy.MM.dd)$(rev:.r)",
+  "comment": "Fixed outdated repository URL",
+  "jobAuthorizationScope": 1,
+  "jobCancelTimeoutInMinutes": 5,
+  "process": {
+    "phases": [
+      {
+        "steps": [
+          {
+            "environment": {},
+            "enabled": true,
+            "continueOnError": false,
+            "alwaysRun": false,
+            "displayName": "Use NuGet 5.0.0",
+            "timeoutInMinutes": 0,
+            "condition": "succeeded()",
+            "task": {
+              "id": "2c65196a-54fd-4a02-9be8-d9d1837b7c5d",
+              "versionSpec": "1.*",
+              "definitionType": "task"
+            },
+            "inputs": { "versionSpec": "5.0.0", "checkLatest": "false" }
+          },
+          {
+            "environment": {},
+            "enabled": true,
+            "continueOnError": false,
+            "alwaysRun": false,
+            "displayName": "NuGet restore",
+            "timeoutInMinutes": 0,
+            "condition": "succeeded()",
+            "task": {
+              "id": "333b11bd-d341-40d9-afcf-b32d5ce6f23b",
+              "versionSpec": "2.*",
+              "definitionType": "task"
+            },
+            "inputs": {
+              "command": "restore",
+              "solution": "$(Parameters.solution)",
+              "selectOrConfig": "select",
+              "feedRestore": "",
+              "includeNuGetOrg": "true",
+              "nugetConfigPath": "",
+              "externalEndpoints": "",
+              "noCache": "false",
+              "disableParallelProcessing": "false",
+              "packagesDirectory": "",
+              "verbosityRestore": "Detailed",
+              "searchPatternPush": "$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg",
+              "nuGetFeedType": "internal",
+              "feedPublish": "",
+              "publishPackageMetadata": "true",
+              "allowPackageConflicts": "false",
+              "externalEndpoint": "",
+              "verbosityPush": "Detailed",
+              "searchPatternPack": "**/*.csproj",
+              "configurationToPack": "$(BuildConfiguration)",
+              "outputDir": "$(Build.ArtifactStagingDirectory)",
+              "versioningScheme": "off",
+              "includeReferencedProjects": "false",
+              "versionEnvVar": "",
+              "requestedMajorVersion": "1",
+              "requestedMinorVersion": "0",
+              "requestedPatchVersion": "0",
+              "packTimezone": "utc",
+              "includeSymbols": "false",
+              "toolPackage": "false",
+              "buildProperties": "",
+              "basePath": "",
+              "verbosityPack": "Detailed",
+              "arguments": ""
+            }
+          },
+          {
+            "environment": {},
+            "enabled": true,
+            "continueOnError": false,
+            "alwaysRun": false,
+            "displayName": "Build solution",
+            "timeoutInMinutes": 0,
+            "condition": "succeeded()",
+            "task": {
+              "id": "71a9a2d3-a98a-4caa-96ab-affca411ecda",
+              "versionSpec": "1.*",
+              "definitionType": "task"
+            },
+            "inputs": {
+              "solution": "$(Parameters.solution)",
+              "vsVersion": "latest",
+              "msbuildArgs": "/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation=\"$(build.artifactstagingdirectory)\\\\\"",
+              "platform": "$(BuildPlatform)",
+              "configuration": "$(BuildConfiguration)",
+              "clean": "false",
+              "maximumCpuCount": "false",
+              "restoreNugetPackages": "false",
+              "msbuildArchitecture": "x86",
+              "logProjectEvents": "true",
+              "createLogFile": "false",
+              "logFileVerbosity": "normal"
+            }
+          },
+          {
+            "environment": {},
+            "enabled": true,
+            "continueOnError": false,
+            "alwaysRun": false,
+            "displayName": "Test Assemblies",
+            "timeoutInMinutes": 0,
+            "condition": "succeeded()",
+            "task": {
+              "id": "ef087383-ee5e-42c7-9a53-ab56c98420f9",
+              "versionSpec": "2.*",
+              "definitionType": "task"
+            },
+            "inputs": {
+              "testSelector": "testAssemblies",
+              "testAssemblyVer2": "**\\$(BuildConfiguration)\\*test*.dll\n!**\\obj\\**",
+              "testPlan": "",
+              "testSuite": "",
+              "testConfiguration": "",
+              "tcmTestRun": "$(test.RunId)",
+              "searchFolder": "$(System.DefaultWorkingDirectory)",
+              "testFiltercriteria": "",
+              "runOnlyImpactedTests": "False",
+              "runAllTestsAfterXBuilds": "50",
+              "uiTests": "false",
+              "vstestLocationMethod": "version",
+              "vsTestVersion": "latest",
+              "vstestLocation": "",
+              "runSettingsFile": "",
+              "overrideTestrunParameters": "",
+              "pathtoCustomTestAdapters": "",
+              "runInParallel": "False",
+              "runTestsInIsolation": "False",
+              "codeCoverageEnabled": "False",
+              "otherConsoleOptions": "",
+              "distributionBatchType": "basedOnTestCases",
+              "batchingBasedOnAgentsOption": "autoBatchSize",
+              "customBatchSizeValue": "10",
+              "batchingBasedOnExecutionTimeOption": "autoBatchSize",
+              "customRunTimePerBatchValue": "60",
+              "dontDistribute": "False",
+              "testRunTitle": "",
+              "platform": "$(BuildPlatform)",
+              "configuration": "$(BuildConfiguration)",
+              "publishRunAttachments": "true",
+              "diagnosticsEnabled": "True",
+              "collectDumpOn": "onAbortOnly",
+              "rerunFailedTests": "False",
+              "rerunType": "basedOnTestFailurePercentage",
+              "rerunFailedThreshold": "30",
+              "rerunFailedTestCasesMaxLimit": "5",
+              "rerunMaxAttempts": "3"
+            }
+          },
+          {
+            "environment": {},
+            "enabled": true,
+            "continueOnError": true,
+            "alwaysRun": false,
+            "displayName": "Publish symbols path",
+            "timeoutInMinutes": 0,
+            "condition": "succeeded()",
+            "task": {
+              "id": "0675668a-7bba-4ccb-901d-5ad6554ca653",
+              "versionSpec": "1.*",
+              "definitionType": "task"
+            },
+            "inputs": {
+              "SymbolsPath": "",
+              "SearchPattern": "**\\bin\\**\\*.pdb",
+              "SymbolsFolder": "",
+              "SkipIndexing": "false",
+              "TreatNotIndexedAsWarning": "false",
+              "SymbolsMaximumWaitTime": "",
+              "SymbolsProduct": "",
+              "SymbolsVersion": "",
+              "SymbolsArtifactName": "Symbols_$(BuildConfiguration)"
+            }
+          },
+          {
+            "environment": {},
+            "enabled": true,
+            "continueOnError": false,
+            "alwaysRun": false,
+            "displayName": "Publish Artifact",
+            "timeoutInMinutes": 0,
+            "condition": "succeeded()",
+            "task": {
+              "id": "2ff763a7-ce83-4e1f-bc89-0ae63477cebe",
+              "versionSpec": "1.*",
+              "definitionType": "task"
+            },
+            "inputs": {
+              "PathtoPublish": "$(build.artifactstagingdirectory)",
+              "ArtifactName": "$(Parameters.ArtifactName)",
+              "ArtifactType": "Container",
+              "TargetPath": "\\\\my\\share\\$(Build.DefinitionName)\\$(Build.BuildNumber)",
+              "Parallel": "false",
+              "ParallelCount": "8",
+              "FileCopyOptions": ""
+            }
+          }
+        ],
+        "name": "Agent job 1",
+        "refName": "Phase_1",
+        "condition": "succeeded()",
+        "target": {
+          "executionOptions": { "type": 0 },
+          "allowScriptsAuthAccessOption": false,
+          "type": 1
+        },
+        "jobAuthorizationScope": 1
+      }
+    ],
+    "type": 1
+  },
+  "repository": {
+    "properties": {
+      "apiUrl": "https://api.github.com/repos/The-Running-Dev/Demo-PatientViewer.NET",
+      "branchesUrl": "https://api.github.com/repos/The-Running-Dev/Demo-PatientViewer.NET/branches",
+      "cloneUrl": "https://github.com/The-Running-Dev/Demo-PatientViewer.NET.git",
+      "connectedServiceId": "60cc1049-bf63-4a58-8d71-007c668ee071",
+      "defaultBranch": "master",
+      "fullName": "The-Running-Dev/Demo-PatientViewer.NET",
+      "hasAdminPermissions": "True",
+      "isFork": "False",
+      "isPrivate": "False",
+      "lastUpdated": "11/30/2019 15:16:38",
+      "manageUrl": "https://github.com/The-Running-Dev/Demo-PatientViewer.NET",
+      "nodeId": "MDEwOlJlcG9zaXRvcnkxOTIxOTExMjA=",
+      "ownerId": "403682",
+      "orgName": "The-Running-Dev",
+      "refsUrl": "https://api.github.com/repos/The-Running-Dev/Demo-PatientViewer.NET/git/refs",
+      "safeRepository": "The-Running-Dev/Demo-PatientViewer.NET",
+      "shortName": "Demo-PatientViewer.NET",
+      "ownerAvatarUrl": "https://avatars1.githubusercontent.com/u/403682?v=4",
+      "archived": "False",
+      "externalId": "192191120",
+      "ownerIsAUser": "True",
+      "checkoutNestedSubmodules": "false",
+      "cleanOptions": "0",
+      "fetchDepth": "0",
+      "gitLfsSupport": "false",
+      "reportBuildStatus": "true",
+      "skipSyncSource": "false",
+      "labelSourcesFormat": "Release-$(build.buildNumber)",
+      "labelSources": "6"
+    },
+    "id": "The-Running-Dev/Demo-PatientViewer.NET",
+    "type": "GitHub",
+    "name": "The-Running-Dev/Demo-PatientViewer.NET",
+    "url": "https://github.com/The-Running-Dev/Demo-PatientViewer.NET.git",
+    "defaultBranch": "master",
+    "clean": "false",
+    "checkoutSubmodules": false
+  },
+  "processParameters": {
+    "inputs": [
+      {
+        "aliases": [],
+        "options": {},
+        "properties": {},
+        "name": "solution",
+        "label": "Path to solution or packages.config",
+        "defaultValue": "**\\*.sln",
+        "required": true,
+        "type": "filePath",
+        "helpMarkDown": "The path to the Visual Studio solution file or NuGet packages.config",
+        "visibleRule": "",
+        "groupName": ""
+      },
+      {
+        "aliases": [],
+        "options": {},
+        "properties": {},
+        "name": "ArtifactName",
+        "label": "Artifact Name",
+        "defaultValue": "drop",
+        "required": true,
+        "type": "string",
+        "helpMarkDown": "The name of the artifact to create.",
+        "visibleRule": "",
+        "groupName": ""
+      }
+    ]
+  },
+  "quality": 1,
+  "authoredBy": {
+    "displayName": "Ben Richards",
+    "url": "https://spsprodeus23.vssps.visualstudio.com/A5808097e-b9cd-488d-bb3d-4c3ecaf80255/_apis/Identities/9b1ccf0b-5265-4a03-96e7-aed2e0a4e094",
+    "_links": {
+      "avatar": {
+        "href": "https://boyan.visualstudio.com/_apis/GraphProfile/MemberAvatars/msa.MDZlODVkMmItNzk3Ny03NjcyLWEyZTMtZjQ3YzEzOWVkMDlm"
+      }
+    },
+    "id": "9b1ccf0b-5265-4a03-96e7-aed2e0a4e094",
+    "uniqueName": "boyank@gmail.com",
+    "imageUrl": "https://boyan.visualstudio.com/_apis/GraphProfile/MemberAvatars/msa.MDZlODVkMmItNzk3Ny03NjcyLWEyZTMtZjQ3YzEzOWVkMDlm",
+    "descriptor": "msa.MDZlODVkMmItNzk3Ny03NjcyLWEyZTMtZjQ3YzEzOWVkMDlm"
+  },
+  "drafts": [],
+  "queue": {
+    "_links": {
+      "self": { "href": "https://boyan.visualstudio.com/_apis/build/Queues/12" }
+    },
+    "id": 12,
+    "name": "Hosted VS2017",
+    "url": "https://boyan.visualstudio.com/_apis/build/Queues/12",
+    "pool": { "id": 4, "name": "Hosted VS2017", "isHosted": true }
+  },
+  "id": 2,
+  "name": "PatientViewer.NET Build",
+  "url": "https://boyan.visualstudio.com/78a0c3d6-7329-407f-80d5-126971f5cbc6/_apis/build/Definitions/2?revision=8",
+  "uri": "vstfs:///Build/Definition/2",
+  "path": "\\",
+  "type": 2,
+  "queueStatus": 0,
+  "revision": 8,
+  "createdDate": "2019-11-30T15:24:14.030Z",
+  "project": {
+    "id": "78a0c3d6-7329-407f-80d5-126971f5cbc6",
+    "name": "PatientViewer.NET",
+    "description": "Builds and release the PatientVIewer.NET",
+    "url": "https://boyan.visualstudio.com/_apis/projects/78a0c3d6-7329-407f-80d5-126971f5cbc6",
+    "state": 1,
+    "revision": 27,
+    "visibility": 0,
+    "lastUpdateTime": "2019-06-16T22:55:07.213Z"
+  }
+}
